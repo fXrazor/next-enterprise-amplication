@@ -1,4 +1,4 @@
-import { Order } from "../order/Order";
+import { JsonValue } from "type-fest";
 
 export type Product = {
   createdAt: Date;
@@ -6,6 +6,6 @@ export type Product = {
   id: string;
   itemPrice: number | null;
   name: string | null;
-  orders?: Array<Order>;
+  orders: JsonValue;
   updatedAt: Date;
 };

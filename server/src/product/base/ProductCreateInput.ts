@@ -11,14 +11,10 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import {
-  IsString,
-  IsOptional,
-  IsNumber,
-  ValidateNested,
-} from "class-validator";
-import { OrderCreateNestedManyWithoutProductsInput } from "./OrderCreateNestedManyWithoutProductsInput";
-import { Type } from "class-transformer";
+import { IsString, IsOptional, IsNumber } from "class-validator";
+import { IsJSONValue } from "../../validators";
+import { GraphQLJSON } from "graphql-type-json";
+import { InputJsonValue } from "../../types";
 
 @InputType()
 class ProductCreateInput {
@@ -57,15 +53,13 @@ class ProductCreateInput {
 
   @ApiProperty({
     required: false,
-    type: () => OrderCreateNestedManyWithoutProductsInput,
   })
-  @ValidateNested()
-  @Type(() => OrderCreateNestedManyWithoutProductsInput)
+  @IsJSONValue()
   @IsOptional()
-  @Field(() => OrderCreateNestedManyWithoutProductsInput, {
+  @Field(() => GraphQLJSON, {
     nullable: true,
   })
-  orders?: OrderCreateNestedManyWithoutProductsInput;
+  orders?: InputJsonValue;
 }
 
 export { ProductCreateInput as ProductCreateInput };
