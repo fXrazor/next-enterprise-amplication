@@ -1,8 +1,8 @@
-import { OrderUpdateManyWithoutProductsInput } from "./OrderUpdateManyWithoutProductsInput";
+import { InputJsonValue } from "../../types";
 
 export type ProductUpdateInput = {
   description?: string | null;
   itemPrice?: number | null;
   name?: string | null;
-  orders?: OrderUpdateManyWithoutProductsInput;
+  orders?: InputJsonValue;
 };

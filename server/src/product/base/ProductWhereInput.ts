@@ -13,10 +13,10 @@ import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { Type } from "class-transformer";
-import { IsOptional, ValidateNested } from "class-validator";
+import { IsOptional } from "class-validator";
 import { StringFilter } from "../../util/StringFilter";
 import { FloatNullableFilter } from "../../util/FloatNullableFilter";
-import { OrderListRelationFilter } from "../../order/base/OrderListRelationFilter";
+import { JsonFilter } from "../../util/JsonFilter";
 
 @InputType()
 class ProductWhereInput {
@@ -66,15 +66,14 @@ class ProductWhereInput {
 
   @ApiProperty({
     required: false,
-    type: () => OrderListRelationFilter,
+    type: JsonFilter,
   })
-  @ValidateNested()
-  @Type(() => OrderListRelationFilter)
+  @Type(() => JsonFilter)
   @IsOptional()
-  @Field(() => OrderListRelationFilter, {
+  @Field(() => JsonFilter, {
     nullable: true,
   })
-  orders?: OrderListRelationFilter;
+  orders?: JsonFilter;
 }
 
 export { ProductWhereInput as ProductWhereInput };
