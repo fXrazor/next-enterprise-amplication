@@ -1,6 +1,6 @@
 {
-  "short_name": "Notification Manager",
-  "name": "Notification Manager",
+  "short_name": "User Service",
+  "name": "User Service",
   "icons": [
     {
       "src": "favicon.ico",
